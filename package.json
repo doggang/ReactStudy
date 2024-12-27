@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/doggang/ReactStudy/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/doggang/ReactStudy#readme"
 }
