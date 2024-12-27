@@ -23,9 +23,34 @@ console.log(arr2.includes(3));
 let arr3 = [1,2,3]
 console.log(arr3.indexOf(2));
 
+<<<<<<< HEAD
 //4. findIndex
 // 모든 요소를 순회하면서, 콜백함수를 만족하는 
 // 특정 요소의 인덱스(위치)를 반환하는 메서드
 
 let arr4 = [1,2,3,4,1];
 arr4.findIndex(1);
+=======
+// 4. findIndex
+// 모든 요소를 순회하며, 콜백함수를 만족하는 특정요소의 인덱스(위치)를 반환하는 메서드
+let arr4 = [1,2,3,3,3];
+const findedIndex = arr4.findIndex((item)=>{
+  if(item===3){
+    return true;
+  }
+})
+console.log(findedIndex);
+
+// 5.find
+// 모든 요소를 순회하며, 콜백함수를 만족하는 요소를 찾는데, 요소를 그대로 반환
+let arr5 = [
+  {name: "김도현"},
+  {age : 25},
+  {hobby : "sleep"}
+  ];
+
+const finded = arr5.find(
+  (item) => item.name ==="김도현"
+);
+console.log(finded);
+>>>>>>> 3c707d9c672cd6379d8b55bcb2dcced1c4637679
