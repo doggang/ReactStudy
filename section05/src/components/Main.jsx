@@ -1,7 +1,10 @@
+import "./Main.css";
 const Main = ()=>{
+
+    
     return(
         <main>
-            <h3>hi</h3>
+            <h3 className="logout">hello</h3>
         </main>
     )
 }
