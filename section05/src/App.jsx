@@ -1,24 +1,14 @@
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
-import Button from './components/Button';
+import "./components/Bulb.jsx";
+import "./components/Counter.jsx";
 
-function App() {
-  const obj = {
-    text:"김김",
-    color:"orange",
-    a:"A",
-    b:"B"
-  }
-  return (
+function App(){
+
+  return(
     <>
-      <Button {...obj}/>
-      <Button text={"메일"} color={"red"}/>
-      <Button text={"카페"}color={"blue"}/>
-      <Button text={"머더라.."}/>
+      <Bulb />
     </>
-  )
+  );
 }
 
 export default App;
