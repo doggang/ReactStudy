@@ -1,12 +1,11 @@
 import './App.css';
-import "./components/Bulb.jsx";
-import "./components/Counter.jsx";
+import Register from './components/Register';
 
 function App(){
 
   return(
     <>
-      <Bulb />
+    <Register />
     </>
   );
 }
