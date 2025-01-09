@@ -1,39 +1,55 @@
-import { useState } from "react"
+import { useState,useRef } from "react"
 
 const Register=()=>{
-  const [name, setName] = useState("홍길동");
-  const [birth, setBirth] = useState("2000-10-10");
-  const [country, setCountry] = useState("도현국");
-  const [bio, setBio] = useState("bio");
+  const [input,setInput] = useState({
+    name:"",
+    birth:"",
+    country:"",
+    bio:""
+  })
 
-  const onChangeName = (e)=>{
-    setName(e.target.value);
+  const countRef = useRef(0);
+  const inputRef = useRef();
+
+  const onChange = (e)=>{
+    setInput({
+      ...input,
+      [e.target.name]:e.target.value
+    })
   }
-  const onChangeBirth = (e)=>{
-    setBirth(e.target.value);
-  }
-  const onChangeCountry = (e)=>{
-    setCountry(e.target.value);
-  }
-  const onChangeBio = (e)=>{
-    setBio(e.target.value);
+  
+  const onSubmit=()=>{
+    if(input.name === ""){
+      inputRef.current.focus();
+    }
   }
 
   return(
-    <register>
-      <input onChange={onChangeName} value={name} placeholder="이름" type="text" />
-      <h1>{name}</h1>
-      <input onChange={onChangeBirth} type="date" />
-      <h1>{birth}</h1>
-      <select value={country} onChange={onChangeCountry}>
-        <option value="한국">한국</option>
-        <option value="중국">중국</option>
-        <option value="북한">북한</option>
-      </select>
-      <h1>{country}</h1>
-      <textarea onChange={onChangeBio} value={bio}></textarea>
-      <h1>{bio}</h1>
-    </register>
+  <register>
+    
+
+    <input ref={inputRef} value={input.name} onChange={onChange} name="name" type="text" />
+    <h1>{input.name}</h1>
+
+
+    <input onChange={onChange} name="birth" type="date" />
+    <h1>{input.birth}</h1>
+
+
+    <select onChange={onChange} name="country">
+      <option value="한국">한국</option>
+      <option value="미국">미국</option>
+      <option value="중국국">중국국</option>
+    </select>
+    <h1>{input.country}</h1>
+
+
+    <textarea onChange={onChange} name="bio"></textarea>
+    <h1>{input.bio}</h1>
+
+    <button onClick={onSubmit}>제출</button>
+
+  </register>
   );
 }
 
