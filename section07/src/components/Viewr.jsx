@@ -1,9 +1,8 @@
 const Viewer = ({count})=>{
-
     return(
         <viwer>
-            <div>현재 카운트 : </div>
-            <h2>{count}</h2>
+            <div>현재 카운터 수 :</div>
+            <h1>{count}</h1>
         </viwer>
     )
 }

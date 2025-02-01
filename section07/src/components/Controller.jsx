@@ -1,26 +1,25 @@
-
-const Controller = ({clickBtn})=>{
-    
+const Controller = ({onClickBtn})=>{
     return(
         <controller>
             <button onClick={()=>{
-                clickBtn(-1);
+                onClickBtn(-1);
             }}>-1</button>
             <button onClick={()=>{
-                clickBtn(-10);
+                onClickBtn(-10);
             }}>-10</button>
             <button onClick={()=>{
-                clickBtn(-100);
+                onClickBtn(-100);
             }}>-100</button>
             <button onClick={()=>{
-                clickBtn(100);
-            }}>+100</button>
+                onClickBtn(1);
+            }}>1</button>
             <button onClick={()=>{
-                clickBtn(10);
-            }}>+10</button>
+                onClickBtn(10);
+            }}>10</button>
             <button onClick={()=>{
-                clickBtn(1);
-            }}>+1</button>
+                onClickBtn(100);
+            }}>100</button>
+
         </controller>
     )
 }

@@ -1,14 +1,12 @@
-body{
-  padding: 20px;
-}
 .app{
-  margin: 0 auto;
   width: 400px;
+  margin: 0 auto;
 }
-.app>section{
-  background-color: rgb(245, 245, 245);
-  border: 1px solid rgb(240,240,240);
+
+.app > section{
+  background-color: rgb(245,245,245);
   border-radius: 5px;
+  border: 1px solid rgb(240,240,240);
   padding: 20px;
-  margin-bottom: 10px ;
+  margin: 20px 0;
 }

@@ -2,9 +2,9 @@ import { useEffect } from "react";
 
 const Even = ()=>{
     useEffect(()=>{
-        return ()=>{
+        return()=>{
             console.log("unmount");
-        }
+        };
     },[])
  return(
     <even>
