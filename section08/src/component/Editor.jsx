@@ -16,6 +16,7 @@ const Editor = ({onCreate})=>{
             return;
         }
         onCreate(content);
+        setContent("");
     }
 
     const onKeyDown = (e)=>{
