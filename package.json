@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,7 @@
     "url": "https://github.com/doggang/ReactStudy/issues"
   },
   "type": "module",
-  "homepage": "https://github.com/doggang/ReactStudy#readme",
+  "homepage": "https://doggang.github.io/ReactStudy/",
   "dependencies": {
     "randomcolor": "^0.6.2"
   }
