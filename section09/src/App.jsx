@@ -1,12 +1,20 @@
-import { useState, useRef} from 'react'
+import { useState, useRef, useReducer} from 'react'
 import './App.css'
 import Header from './component/Header'
 import Editor from './component/Editor'
 import List from './component/List'
 import Exam from './component/exam'
 
+const reducer=(state, action)=>{
+  switch(action.type){
+    case "CREATE" : return [action.data, ...state];
+    case "UPDATE" : return state.map((item)=>(item.id === action.targetId)?{...item, isDone: !item.isDone,}:item);
+    case "DELETE" : return state.filter((item)=>action.targetId!==item.id);
+  }
+}
 
 function App() {
+
   const mokData = [
     {
       id:3,
@@ -28,42 +36,49 @@ function App() {
     },
   ]
 
-  const [todos, setTodos] = useState(mokData);
+  const [todos, dispatch] = useReducer(reducer,mokData);
 
   const idRef = useRef(4);
 
   const onCreate = (content)=>{
-    const newTodo = {
-      id:idRef.current++,
-      isDone:false,
-      content:content,
-      date: new Date().toDateString()
-    };
-    setTodos([newTodo, ...todos]);
+    dispatch({
+      type:"CREATE",
+      data : {
+        id:idRef.current++,
+        isDone:false,
+        content:content,
+        date: new Date().toDateString()
+      }
+    })
     console.log(todos);
   }
 
   const onUpdate = (targetId)=>{
-    setTodos(todos.map((todo)=>(todo.id === targetId)?{...todo, isDone: !todo.isDone,}:todo));
+    dispatch({
+      type:"UPDATE",
+      targetId : targetId,
+      }
+    )
   }
 
   const onDelete = (targetId)=>{
-    setTodos(
-      todos.filter((todo)=>targetId!==todo.id)
-    )
+    dispatch({
+      type:"DELETE",
+      targetId: targetId,
+    })
   }
 
 
   return (
     <div className='app'>
-      <Exam />
-      {/* <Header />
+      {/* <Exam /> */}
+      <Header />
       <Editor 
         onCreate={onCreate}
       />
       <List 
         todos={todos} onUpdate={onUpdate} onDelete={onDelete}
-      /> */}
+      />
     </div>
   )
 }
