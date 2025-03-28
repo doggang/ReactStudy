@@ -1,8 +1,13 @@
-import { useState, useRef} from 'react'
+import { useState, useRef, createContext} from 'react'
 import './App.css'
 import Header from './component/Header'
 import Editor from './component/Editor'
 import List from './component/List'
+
+function reducer(state, action){
+  
+}
+export const TodoContext = createContext();
 
 function App() {
   const mokData = [
@@ -37,30 +42,25 @@ function App() {
       content:content,
       date: new Date().toDateString()
     };
-    setTodos([newTodo, ...todos]);
-    console.log(todos);
+    setTodos([...todos, newTodo]);
   }
 
   const onUpdate = (targetId)=>{
-    setTodos(todos.map((todo)=>(todo.id === targetId)?{...todo, isDone: !todo.isDone,}:todo));
+    setTodos(todos.map((todo)=>targetId===todo.id ? {...todo, isDone: !isDone} : todo));
   }
 
   const onDelete = (targetId)=>{
-    setTodos(
-      todos.filter((todo)=>targetId!==todo.id)
-    )
+    setTodos(todos.filter((todo)=>todo.id != targetId));
   }
 
 
   return (
     <div className='app'>
       <Header />
-      <Editor 
-        onCreate={onCreate}
-      />
-      <List 
-        todos={todos} onUpdate={onUpdate} onDelete={onDelete}
-      />
+      <TodoContext.Provider value={{todos, onCreate, onUpdate, onDelete}}>
+        <Editor />
+        <List />
+      </TodoContext.Provider>
     </div>
   )
 }
