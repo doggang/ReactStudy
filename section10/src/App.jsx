@@ -4,7 +4,7 @@ import Header from './component/Header'
 import Editor from './component/Editor'
 import List from './component/List'
 import Exam from './component/exam'
-import { createContext } from 'react'
+import { createContext, useMemo } from 'react'
 
 const reducer=(state, action)=>{
   switch(action.type){
@@ -14,8 +14,8 @@ const reducer=(state, action)=>{
   }
 }
 
-const TodoContext = createContext();
-console.log(TodoContext);
+export const TodoStateContext = createContext();
+export const TodoDispatchContext = createContext();
 
 function App() {
 
@@ -72,17 +72,20 @@ function App() {
     })
   }
 
+  const memoizedDispatch = useMemo(()=>{
+    return {onCreate, onUpdate, onDelete};
+  },[]);
 
   return (
     <div className='app'>
       {/* <Exam /> */}
       <Header />
-      <Editor 
-        onCreate={onCreate}
-      />
-      <List 
-        todos={todos} onUpdate={onUpdate} onDelete={onDelete}
-      />
+      <TodoStateContext value={todos}>
+        <TodoDispatchContext value={memoizedDispatch}>
+          <Editor />
+          <List />
+        </TodoDispatchContext>
+      </TodoStateContext>
     </div>
   )
 }
